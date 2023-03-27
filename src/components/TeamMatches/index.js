@@ -75,7 +75,7 @@ class Home extends Component {
     return (
       <div className="ipl-bg-container">
         {isLoading ? (
-          <div data-testid="loader">
+          <div testid="loader">
             <Loader type="Oval" color="#ffffff" height={50} width={50} />
           </div>
         ) : (
@@ -84,7 +84,10 @@ class Home extends Component {
             <LatestMatch latestMatchDetails={latestMatchDetails} />
             <ul>
               {recentMatches.map(recentMatch => (
-                <MatchCard recentMatchDetails={recentMatch} />
+                <MatchCard
+                  recentMatchDetails={recentMatch}
+                  key={recentMatch.id}
+                />
               ))}
             </ul>
           </div>

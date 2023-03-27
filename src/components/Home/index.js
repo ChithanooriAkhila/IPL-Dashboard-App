@@ -17,7 +17,7 @@ class Home extends Component {
     const {teams} = await response.json()
 
     const updatedTeams = teams.map(team => ({
-      name: team.id,
+      name: team.name,
       id: team.id,
       teamImageUrl: team.team_image_url,
     }))
@@ -38,17 +38,18 @@ class Home extends Component {
           alt="ipl logo"
         />
         <h1>IPL Dashboard</h1>
-        <ul>
-          {isLoading ? (
-            <div data-testid="loader">
-              <Loader type="Oval" color="#ffffff" height={50} width={50} />{' '}
-            </div>
-          ) : (
-            matches.map(match => (
+
+        {isLoading ? (
+          <div testid="loader">
+            <Loader type="Oval" color="#ffffff" height={50} width={50} />{' '}
+          </div>
+        ) : (
+          <ul>
+            {matches.map(match => (
               <TeamCard matchDetails={match} key={match.id} />
-            ))
-          )}
-        </ul>
+            ))}
+          </ul>
+        )}
       </div>
     )
   }
